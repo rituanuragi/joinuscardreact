@@ -45,7 +45,7 @@ const BankForm = () => {
   };
 
   const handleOtpClick = () => {
-    fetch("http://localhost:5000/send-otp", {
+    fetch("http://15.207.26.255:5000/send-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const BankForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/submit-form", {
+    fetch("http://15.207.26.255:5000/submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -246,7 +246,9 @@ const BankForm = () => {
                 Andaman and Nicobar Islands
               </option>
               <option value="Chandigarh">Chandigarh</option>
-              <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+              <option value="Dadra and Nagar Haveli">
+                Dadra and Nagar Haveli
+              </option>
               <option value="Daman and Diu">Daman and Diu</option>
               <option value="Lakshadweep">Lakshadweep</option>
               <option value="Delhi">Delhi</option>
@@ -266,7 +268,9 @@ const BankForm = () => {
             />
           </div>
           <div className="form-group" ref={dropdownRef}>
-            <label htmlFor="dropdown">Which Product Do you Take Care For Your Lenders?</label>
+            <label htmlFor="dropdown">
+              Which Product Do you Take Care For Your Lenders?
+            </label>
             <div className="dropdown">
               <button
                 type="button"

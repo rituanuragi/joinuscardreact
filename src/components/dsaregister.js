@@ -80,7 +80,7 @@ const DSARegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/submitdsa", {
+    fetch("http://15.207.26.255:5000/submitdsa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
