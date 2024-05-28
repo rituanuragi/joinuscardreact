@@ -1,12 +1,24 @@
 import React from "react";
-import "./card.css";
-import { RiBankFill } from "react-icons/ri";
 import { IoMdContacts } from "react-icons/io";
-import { MdContactMail } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "../style/card.css";
 
 const PricingSection = () => {
+  const navigate = useNavigate();
+
+  const handleBankerRegistration = () => {
+    navigate("/register-banker");
+  };
+
+  const handleDSARegistration = () => {
+    navigate("/register-dsa");
+  };
+
+  const handleChannelPartnerRegistration = () => {
+    navigate("/register-channel-partner");
+  };
+
   return (
     <section className="section" id="pricing">
       <div className="container">
@@ -30,31 +42,25 @@ const PricingSection = () => {
               <h4 className="f-20 text-primary">Register As Banker</h4>
               <div className="mt-4 pt-2 text-left">
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Leverage Your Expertise.
                 </p>
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Get Help From an existing business skills.
                 </p>
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Utilize Your Finance Skills In Helping Others.
                 </p>
               </div>
               <div className="mt-4 pt-3">
-                <a
-                  href="./registerdsa.js"
+                <button
+                  onClick={handleBankerRegistration}
                   className="btn btn-primary btn-rounded"
                 >
-                  Join US
-                </a>
+                  Join Us
+                </button>
               </div>
             </div>
           </div>
@@ -64,28 +70,25 @@ const PricingSection = () => {
               <h4 className="f-20 text-primary">Register As DSA</h4>
               <div className="mt-4 pt-2 text-left">
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Start Making Revenue From Day 1.
                 </p>
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Get Regular Updates On Your Case Movement.
                 </p>
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Pay Out Release in 24 hours & Access Personalized Support.
                 </p>
               </div>
               <div className="mt-4 pt-3">
-                <a href="" className="btn btn-primary btn-rounded">
+                <button
+                  onClick={handleDSARegistration}
+                  className="btn btn-primary btn-rounded"
+                >
                   Register Now
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -95,29 +98,26 @@ const PricingSection = () => {
               <h4 className="f-20 text-primary">Join As Channel Partner</h4>
               <div className="mt-4 pt-2 text-left">
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Start Making Revenue From Day 1.
                 </p>
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Add Your Product Line With Different Lending Products.
                 </p>
                 <p className="mb-2">
-                  <i className="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i>
-                  <b></b>
                   <TiTick className="h6" />
                   Utilize Your Financial Skills And Start Earning Through
                   Reference.
                 </p>
               </div>
               <div className="mt-4 pt-3">
-                <a href="" className="btn btn-primary btn-rounded">
+                <button
+                  onClick={handleChannelPartnerRegistration}
+                  className="btn btn-primary btn-rounded"
+                >
                   Register Now
-                </a>
+                </button>
               </div>
             </div>
           </div>

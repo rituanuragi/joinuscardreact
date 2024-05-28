@@ -1,0 +1,67 @@
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2021/06/19/20/39/laptop-6349424_1280.jpg");
+}
+
+.form-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 10px;
+  }
+}
+
+
+/* Style for the dropdown */
+.dropdown {
+  position: relative;
+  display: block; /* Ensure the dropdown is a block element to move to the next line */
+  margin-top: 8px; /* Add some space between the label and the dropdown */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  max-height: 200px; /* Limit the height of the dropdown menu */
+  overflow-y: auto; /* Add scrolling if content overflows */
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu .form-check {
+  padding: 8px 36px;
+}
+
+.dropdown-menu .form-check:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-secondary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #0056b3;
+  color: white;
+}

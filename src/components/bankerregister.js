@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "../style/registerdsa.css";
 
 const BankForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,8 @@ const BankForm = () => {
   const [sameAsContact, setSameAsContact] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const dropdownRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -65,8 +68,43 @@ const BankForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    fetch("http://localhost:5000/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Form submitted successfully.");
+        } else {
+          alert("Failed to submit form. Please check the OTP and try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again later.");
+      });
   };
+
+  const handleDropdownClick = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="container">
@@ -100,7 +138,6 @@ const BankForm = () => {
                 setShowOtherBank(e.target.value === "Other");
               }}
             >
-              {/* Add all the bank options here */}
               <option>ADITYA BIRLA</option>
               <option>AXIS</option>
               <option>BAJAJ FINANCE</option>
@@ -174,8 +211,7 @@ const BankForm = () => {
               value={formData.state}
               onChange={handleChange}
             >
-              {/* Add all the state options here */}
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Select your state
               </option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -206,6 +242,15 @@ const BankForm = () => {
               <option value="Uttar Pradesh">Uttar Pradesh</option>
               <option value="Uttarakhand">Uttarakhand</option>
               <option value="West Bengal">West Bengal</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+              <option value="Daman and Diu">Daman and Diu</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Puducherry">Puducherry</option>
             </select>
           </div>
           <div className="form-group">
@@ -220,158 +265,94 @@ const BankForm = () => {
               placeholder="Enter your city"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="product">
-              Which Product Do you Take Care For Your Lenders?
-            </label>
-            <div className="dropdown-checkboxes">
+          <div className="form-group" ref={dropdownRef}>
+            <label htmlFor="dropdown">Which Product Do you Take Care For Your Lenders?</label>
+            <div className="dropdown">
               <button
-                className="btn btn-secondary dropdown-toggle"
                 type="button"
-                id="dropdownMenuButton"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="btn btn-secondary dropdown-toggle"
+                onClick={handleDropdownClick}
               >
-                Select Product
+                Select Products
               </button>
-              <div
-                className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}
-                aria-labelledby="dropdownMenuButton"
-              >
-                {/* Add all the product checkboxes here */}
-                <div>
-                  <input
-                    type="checkbox"
-                    id="homeLoan"
-                    name="product"
-                    value="Home Loan"
-                    checked={formData.products.includes("Home Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="homeLoan">Home Loan</label>
+              {dropdownOpen && (
+                <div className="dropdown-menu show">
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product1"
+                      name="products"
+                      value="Home Loan"
+                      checked={formData.products.includes("Home Loan")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product1">
+                      Home Loan
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product2"
+                      name="products"
+                      value="Personal Loan"
+                      checked={formData.products.includes("Personal Loan")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product2">
+                      Personal Loan
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product3"
+                      name="products"
+                      value="Credit Card"
+                      checked={formData.products.includes("Credit Card")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product3">
+                      Credit Card
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product4"
+                      name="products"
+                      value="Savings Account"
+                      checked={formData.products.includes("Savings Account")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product4">
+                      Savings Account
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product5"
+                      name="products"
+                      value="Fixed Deposit"
+                      checked={formData.products.includes("Fixed Deposit")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product5">
+                      Fixed Deposit
+                    </label>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="homeLoanAffordable"
-                    name="product"
-                    value="Home Loan Affordable"
-                    checked={formData.products.includes("Home Loan Affordable")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="homeLoanAffordable">
-                    Home Loan Affordable
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="lap"
-                    name="product"
-                    value="LAP"
-                    checked={formData.products.includes("LAP")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="lap">LAP</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="businessLoan"
-                    name="product"
-                    value="Business Loan"
-                    checked={formData.products.includes("Business Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="businessLoan">Business Loan</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="personalLoan"
-                    name="product"
-                    value="Personal Loan"
-                    checked={formData.products.includes("Personal Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="personalLoan">Personal Loan</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="carLoan"
-                    name="product"
-                    value="Car Loan"
-                    checked={formData.products.includes("Car Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="carLoan">Car Loan</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="doctorLoan"
-                    name="product"
-                    value="Doctor Loan"
-                    checked={formData.products.includes("Doctor Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="doctorLoan">Doctor Loan</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="professionalLoan"
-                    name="product"
-                    value="Professional Loan"
-                    checked={formData.products.includes("Professional Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="professionalLoan">Professional Loan</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="educationLoan"
-                    name="product"
-                    value="Education Loan"
-                    checked={formData.products.includes("Education Loan")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="educationLoan">Education Loan</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="financeLiteracyProgramme"
-                    name="product"
-                    value="Customer Durable(CD)"
-                    checked={formData.products.includes("Customer Durable(CD)")}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="financeLiteracyProgramme">
-                    Customer Durable(CD)
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="leaseRentalDiscounting"
-                    name="product"
-                    value="Lease Rental Discounting (LRD)"
-                    checked={formData.products.includes(
-                      "Lease Rental Discounting (LRD)"
-                    )}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="leaseRentalDiscounting">
-                    Lease Rental Discounting (LRD)
-                  </label>
-                </div>
-              </div>
+              )}
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">Email address</label>
             <input
               type="email"
               className="form-control"
@@ -379,11 +360,19 @@ const BankForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email address"
+              placeholder="Enter your email"
             />
           </div>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleOtpClick}
+            disabled={otpSent}
+          >
+            Send OTP
+          </button>
           <div className="form-group">
-            <label htmlFor="otp">Get OTP</label>
+            <label htmlFor="otp">OTP</label>
             <input
               type="text"
               className="form-control"
@@ -391,16 +380,8 @@ const BankForm = () => {
               name="otp"
               value={formData.otp}
               onChange={handleChange}
-              placeholder="Enter OTP"
+              placeholder="Enter the OTP"
             />
-            <button
-              type="button"
-              className="btn btn-primary"
-              id="getOTPBtn"
-              onClick={handleOtpClick}
-            >
-              Get OTP
-            </button>
           </div>
           <div className="form-group">
             <label htmlFor="contact">Contact Number</label>
@@ -415,31 +396,31 @@ const BankForm = () => {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="whatsapp">WhatsApp Number</label>
+            <input
+              type="text"
+              className="form-control"
+              id="whatsapp"
+              name="whatsapp"
+              value={sameAsContact ? formData.contact : formData.whatsapp}
+              onChange={handleChange}
+              placeholder="Enter your WhatsApp number"
+              disabled={sameAsContact}
+            />
+          </div>
+          <div className="form-check">
             <input
               type="checkbox"
+              className="form-check-input"
               id="sameAsContact"
               name="sameAsContact"
               checked={sameAsContact}
               onChange={handleChange}
             />
-            <label htmlFor="sameAsContact">
-              WhatsApp number is the same as contact number
+            <label className="form-check-label" htmlFor="sameAsContact">
+              Same as Contact Number
             </label>
           </div>
-          {!sameAsContact && (
-            <div className="form-group" id="whatsappGroup">
-              <label htmlFor="whatsapp">WhatsApp Number</label>
-              <input
-                type="text"
-                className="form-control"
-                id="whatsapp"
-                name="whatsapp"
-                value={formData.whatsapp}
-                onChange={handleChange}
-                placeholder="Enter your WhatsApp number"
-              />
-            </div>
-          )}
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
