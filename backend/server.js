@@ -119,24 +119,22 @@ app.post("/submitdsa", (req, res) => {
     from: formData.email,
     to: "rituf2fintech@gmail.com",
     subject: "New DSA Registration Form Submission",
-    text: `Full Name: ${formData.fullName}\n Email: ${formData.email}\nState: ${
-      formData.state
-    }\nCity: ${formData.city}\nWork Status: ${
-      formData.workStatus
-    }\nOffice Area: ${
-      formData.officeArea
-    }\nProcess Customer Loans: ${formData.processCustomerLoans.join(
-      ", "
-    )}\nTeam Members: ${
-      formData.teamMembers
-    }\nProducts: ${formData.products.join(", ")}
-    }\nProfessional Loan Options: ${
-      formData.professionalLoanOptions.doctor ? "Doctor" : ""
-    }${formData.professionalLoanOptions.ca ? ", CA" : ""}${
+    text: `Full Name: ${formData.fullName}
+            Email: ${formData.email}
+            State: ${formData.state}
+            City: ${formData.city}
+            Work Status: ${formData.workStatus}
+            Office Area: ${formData.officeArea}
+            Process Customer Loans: ${formData.processCustomerLoans.join(", ")}
+            Team Members: ${formData.teamMembers}
+            Products: ${formData.products.join(", ")}
+            Professional Loan Options: ${
+              formData.professionalLoanOptions.doctor ? "Doctor" : ""
+            }${formData.professionalLoanOptions.ca ? ", CA" : ""}${
       formData.professionalLoanOptions.cs ? ", CS" : ""
-    }${formData.professionalLoanOptions.cwa ? ", CWA" : ""}`,
+    }${formData.professionalLoanOptions.cwa ? ", CWA" : ""}
+            WhatsApp Number: ${formData.whatsappNumber}`,
   };
-
   // Sending the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
