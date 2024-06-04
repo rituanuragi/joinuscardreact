@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../style/registerdsa.css";
 
 const BankForm = () => {
+  // State for form data
   const [formData, setFormData] = useState({
     fullName: "",
     bank: "",
@@ -16,6 +17,7 @@ const BankForm = () => {
     products: [],
   });
 
+  // State for managing dynamic form fields and UI behavior
   const [showOtherBank, setShowOtherBank] = useState(false);
   const [sameAsContact, setSameAsContact] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
@@ -23,6 +25,7 @@ const BankForm = () => {
 
   const dropdownRef = useRef(null);
 
+  // Handle input change for form fields
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
@@ -44,8 +47,9 @@ const BankForm = () => {
     }
   };
 
+  // Handle OTP send button click
   const handleOtpClick = () => {
-    fetch("http://15.207.26.255:5000/send-otp", {
+    fetch("http://localhost:5000/send-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,10 +70,11 @@ const BankForm = () => {
       });
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://15.207.26.255:5000/submit-form", {
+    fetch("http://localhost:5000/submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,16 +94,19 @@ const BankForm = () => {
       });
   };
 
+  // Handle dropdown toggle
   const handleDropdownClick = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  // Handle clicks outside of dropdown to close it
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setDropdownOpen(false);
     }
   };
 
+  // Add event listener for clicks outside of dropdown
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -121,6 +129,7 @@ const BankForm = () => {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="Enter your full name"
+              required
             />
           </div>
           <div className="form-group">
@@ -137,7 +146,12 @@ const BankForm = () => {
                 handleChange(e);
                 setShowOtherBank(e.target.value === "Other");
               }}
+              required
             >
+              {/* List of bank options */}
+              <option value="" disabled>
+                Select your bank
+              </option>
               <option>ADITYA BIRLA</option>
               <option>AXIS</option>
               <option>BAJAJ FINANCE</option>
@@ -187,6 +201,7 @@ const BankForm = () => {
                 value={formData.otherBankName}
                 onChange={handleChange}
                 placeholder="Your Currently Associated Bank/NBFC/Fintech"
+                required={showOtherBank}
               />
             </div>
           )}
@@ -200,6 +215,7 @@ const BankForm = () => {
               value={formData.post}
               onChange={handleChange}
               placeholder="Enter your post"
+              required
             />
           </div>
           <div className="form-group">
@@ -210,7 +226,9 @@ const BankForm = () => {
               name="state"
               value={formData.state}
               onChange={handleChange}
+              required
             >
+              {/* List of state options */}
               <option value="" disabled>
                 Select your state
               </option>
@@ -265,6 +283,7 @@ const BankForm = () => {
               value={formData.city}
               onChange={handleChange}
               placeholder="Enter your city"
+              required
             />
           </div>
           <div className="form-group" ref={dropdownRef}>
@@ -281,6 +300,7 @@ const BankForm = () => {
               </button>
               {dropdownOpen && (
                 <div className="dropdown-menu show">
+                  {/* List of product checkboxes */}
                   <div className="form-check">
                     <input
                       type="checkbox"
@@ -365,6 +385,7 @@ const BankForm = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
+              required
             />
           </div>
           <button
@@ -385,6 +406,7 @@ const BankForm = () => {
               value={formData.otp}
               onChange={handleChange}
               placeholder="Enter the OTP"
+              required
             />
           </div>
           <div className="form-group">
@@ -397,6 +419,7 @@ const BankForm = () => {
               value={formData.contact}
               onChange={handleChange}
               placeholder="Enter your contact number"
+              required
             />
           </div>
           <div className="form-group">
@@ -410,6 +433,7 @@ const BankForm = () => {
               onChange={handleChange}
               placeholder="Enter your WhatsApp number"
               disabled={sameAsContact}
+              required
             />
           </div>
           <div className="form-check">

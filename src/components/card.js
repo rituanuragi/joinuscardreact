@@ -18,6 +18,9 @@ const PricingSection = () => {
   const handleChannelPartnerRegistration = () => {
     navigate("/register-channel-partner");
   };
+  const handleDisplayData = () => {
+    navigate("/display-data");
+  };
 
   return (
     <section className="section" id="pricing">

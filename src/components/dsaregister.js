@@ -7,12 +7,11 @@ const DSARegistrationForm = () => {
     state: "",
     city: "",
     workStatus: "",
-    officeArea: "",
+    // officeArea: "",
     processCustomerLoans: [],
     teamMembers: "",
     products: [],
     disbursements: {}, // Updated this to store disbursement amounts for each product
-
     professionalLoanOptions: {
       doctor: false,
       ca: false,
@@ -80,7 +79,7 @@ const DSARegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://15.207.26.255:5000/submitdsa", {
+    fetch("http://localhost:5000/submitdsa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -330,7 +329,7 @@ const DSARegistrationForm = () => {
               </label>
             </div>
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="officeArea">
               If you are already working then please share your office area in
               Square Feet?
@@ -344,7 +343,7 @@ const DSARegistrationForm = () => {
               value={formData.officeArea}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div className="form-group">
             <label>How do you process your cases Currently?</label>
             <div className="form-check">
@@ -511,7 +510,63 @@ const DSARegistrationForm = () => {
                       Professional Loan
                     </label>
                   </div>
-                  {renderProfessionalLoanOptions()}
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product4"
+                      name="products"
+                      value="Professional Loan"
+                      checked={formData.products.includes("Professional Loan")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product4">
+                      Professional Doctor Loan
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product4"
+                      name="products"
+                      value="Professional Loan"
+                      checked={formData.products.includes("Professional Loan")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product4">
+                      Professional CA Loan
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product4"
+                      name="products"
+                      value="Professional Loan"
+                      checked={formData.products.includes("Professional Loan")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product4">
+                      Professional CS Loan
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product4"
+                      name="products"
+                      value="Professional Loan"
+                      checked={formData.products.includes("Professional Loan")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product4">
+                      Professional CWA Loan
+                    </label>
+                  </div>
+                  {/* {renderProfessionalLoanOptions()} */}
                   <div className="form-check">
                     <input
                       type="checkbox"
@@ -530,7 +585,7 @@ const DSARegistrationForm = () => {
               )}
             </div>
           </div>
-          {renderDisbursementInputs()}
+          {/* {renderDisbursementInputs()} */}
           <div className="form-group">
             <label htmlFor="whatsappNumber">WhatsApp Number</label>
             <input

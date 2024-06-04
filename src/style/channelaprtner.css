@@ -1,0 +1,9 @@
+.submit-button-container {
+  margin-top: 20px;
+}
+
+.button-container {
+  background-color: blue; /* Set the background color for the button container */
+  padding: 10px; /* Optional: Adds padding around the buttons */
+  border-radius: 5px; /* Optional: Rounds the corners of the container */
+}

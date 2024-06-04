@@ -1,0 +1,38 @@
+/* navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #1e1e2f, #23233a);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-logo a {
+  font-size: 1.5em;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  font-size: 1.2em;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffd700;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* Optional: Adding a font from Google Fonts for a cinematic feel */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap");
