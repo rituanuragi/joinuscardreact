@@ -1,0 +1,124 @@
+body {
+  background: url("https://c0.wallpaperflare.com/preview/468/930/352/background-website-plant-wall.jpg");
+  width: 100%;
+  background-size: cover;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  color: #2c3ce3;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  text-decoration: underline;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+h3 {
+  color: blue;
+  font-weight: 300;
+}
+
+.content {
+  text-align: center;
+  padding: 20px;
+}
+
+.content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 1px;
+  color: #212427;
+}
+
+.video-container {
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  width: 70%;
+  height: 415px;
+  border: none;
+}
+
+.button-7 {
+  background: linear-gradient(135deg, #0095ff, #0064bd);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0;
+  outline: none;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-7:hover,
+.button-7:focus {
+  background: linear-gradient(135deg, #07c, #005bb5);
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.2);
+}
+
+.button-7:active {
+  background: linear-gradient(135deg, #0064bd, #004a91);
+  box-shadow: none;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .video-container iframe {
+    height: 200px;
+  }
+
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .content h2 {
+    font-size: 20px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .button-7 {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
+}

@@ -50,6 +50,8 @@ const dsaSchema = new mongoose.Schema(
       cwa: Boolean,
     },
     whatsappNumber: String,
+    contactNumber: String, // New field
+    sameAsWhatsApp: Boolean, // New field
   },
   { collection: "registerasdsa" }
 );
@@ -274,6 +276,8 @@ app.post("/submitdsa", (req, res) => {
     products: formData.products,
     professionalLoanOptions: formData.professionalLoanOptions,
     whatsappNumber: formData.whatsappNumber,
+    contactNumber: formData.contactNumber, // New field
+    sameAsWhatsApp: formData.sameAsWhatsApp, // New field
   });
 
   newDSA
@@ -289,7 +293,7 @@ app.post("/submitdsa", (req, res) => {
                State: ${formData.state}
                City: ${formData.city}
                Work Status: ${formData.workStatus}
-            
+               Office Area: ${formData.officeArea}
                Process Customer Loans: ${formData.processCustomerLoans.join(
                  ", "
                )}
@@ -300,7 +304,12 @@ app.post("/submitdsa", (req, res) => {
                }${formData.professionalLoanOptions.ca ? ", CA" : ""}${
           formData.professionalLoanOptions.cs ? ", CS" : ""
         }${formData.professionalLoanOptions.cwa ? ", CWA" : ""}
-               WhatsApp Number: ${formData.whatsappNumber}`,
+               WhatsApp Number: ${formData.whatsappNumber}
+               Contact Number: ${
+                 formData.sameAsWhatsApp
+                   ? formData.whatsappNumber
+                   : formData.contactNumber
+               }`,
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
@@ -349,7 +358,6 @@ app.post("/submitdsa", (req, res) => {
       res.status(500).send("Error saving DSA data");
     });
 });
-
 // Create a new channel partner entry using the schema
 app.post("/submitchannelpartner", (req, res) => {
   const formData = req.body;

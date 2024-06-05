@@ -19,6 +19,8 @@ const DSARegistrationForm = () => {
       cwa: false,
     },
     whatsappNumber: "",
+    contactNumber: "",
+    sameAsWhatsApp: false,
   });
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -47,7 +49,7 @@ const DSARegistrationForm = () => {
             ca: false,
             cs: false,
             cwa: false,
-          }, // Reset professional loan options when changing products
+          },
         }));
       } else if (name.startsWith("professionalLoanOption")) {
         const option = name.split("_")[1];
@@ -57,6 +59,12 @@ const DSARegistrationForm = () => {
             ...prevData.professionalLoanOptions,
             [option]: checked,
           },
+        }));
+      } else if (name === "sameAsWhatsApp") {
+        setFormData((prevData) => ({
+          ...prevData,
+          sameAsWhatsApp: checked,
+          contactNumber: checked ? prevData.whatsappNumber : "",
         }));
       }
     } else if (name.startsWith("disbursement_")) {
@@ -72,6 +80,9 @@ const DSARegistrationForm = () => {
       setFormData({
         ...formData,
         [name]: value,
+        ...(name === "whatsappNumber" && formData.sameAsWhatsApp
+          ? { contactNumber: value }
+          : {}),
       });
     }
   };
@@ -593,11 +604,40 @@ const DSARegistrationForm = () => {
               className="form-control"
               id="whatsappNumber"
               name="whatsappNumber"
-              placeholder="Enter WhatsApp Number"
+              placeholder="Enter your WhatsApp number"
               value={formData.whatsappNumber}
               onChange={handleChange}
             />
           </div>
+          <div className="form-group">
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="sameAsWhatsApp"
+                name="sameAsWhatsApp"
+                checked={formData.sameAsWhatsApp}
+                onChange={handleChange}
+              />
+              <label className="form-check-label" htmlFor="sameAsWhatsApp">
+                Is your contact number same as WhatsApp number?
+              </label>
+            </div>
+          </div>
+          {!formData.sameAsWhatsApp && (
+            <div className="form-group">
+              <label htmlFor="contactNumber">Contact Number</label>
+              <input
+                type="text"
+                className="form-control"
+                id="contactNumber"
+                name="contactNumber"
+                placeholder="Enter your contact number"
+                value={formData.contactNumber}
+                onChange={handleChange}
+              />
+            </div>
+          )}
           <button type="submit" className="btn btn-primary">
             Submit
           </button>

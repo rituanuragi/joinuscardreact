@@ -7,20 +7,31 @@ import DSARegistrationForm from "./components/dsaregister";
 import ChannelForm from "./components/channelpartner";
 import DisplayData from "./components/displaydata"; // Import the DisplayData component
 import Navbar from "./components/navbar"; // Import the Navbar component
+import GlobalFinancialLiteracyCampaign from "./components/financeliteracy";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
+
         <Routes>
           <Route path="/" element={<PricingSection />} />
           <Route path="/register-banker" element={<BankForm />} />
           <Route path="/register-dsa" element={<DSARegistrationForm />} />
           <Route path="/register-channel-partner" element={<ChannelForm />} />
           <Route
+            path="/components/financeliteracy.js"
+            element={<GlobalFinancialLiteracyCampaign />}
+          />
+          <Route
             path="/display-bankers"
             element={<DisplayData type="bankers" />}
+          />
+          <Route path="/display-dsas" element={<DisplayData type="dsas" />} />
+          <Route
+            path="/display-channelpartners"
+            element={<DisplayData type="channelpartners" />}
           />
           <Route path="/display-dsas" element={<DisplayData type="dsas" />} />
           <Route

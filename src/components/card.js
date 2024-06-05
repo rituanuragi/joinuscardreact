@@ -22,6 +22,9 @@ const PricingSection = () => {
     navigate("/display-data");
   };
 
+  const handlefinanceliteracy = () => {
+    navigate("/GlobalFinancialLiteracyCampaign ");
+  };
   return (
     <section className="section" id="pricing">
       <div className="container">
@@ -46,15 +49,17 @@ const PricingSection = () => {
               <div className="mt-4 pt-2 text-left">
                 <p className="mb-2">
                   <TiTick className="h6" />
-                  Leverage Your Expertise.
+                  Update your current profile and network with more than 10,000
+                  Bankers.
                 </p>
                 <p className="mb-2">
                   <TiTick className="h6" />
-                  Get Help From an existing business skills.
+                  Expand your knowledge base about different Competitors &
+                  Products.
                 </p>
                 <p className="mb-2">
                   <TiTick className="h6" />
-                  Utilize Your Finance Skills In Helping Others.
+                  Keep informed about all big news of Financial Services.
                 </p>
               </div>
               <div className="mt-4 pt-3">
@@ -73,16 +78,21 @@ const PricingSection = () => {
               <h4 className="f-20 text-primary">Register As DSA</h4>
               <div className="mt-4 pt-2 text-left">
                 <p className="mb-2">
-                  <TiTick className="h6" />
-                  Start Making Revenue From Day 1.
+                  <TiTick className="h6" />1 Code for all Banks,NBFC's And
+                  Fintech's
                 </p>
                 <p className="mb-2">
                   <TiTick className="h6" />
-                  Get Regular Updates On Your Case Movement.
+                  Same day Disbursal,Same day Payout
                 </p>
                 <p className="mb-2">
                   <TiTick className="h6" />
-                  Pay Out Release in 24 hours & Access Personalized Support.
+                  Track Live movement of all your Cases
+                </p>
+
+                <p className="mb-2">
+                  <TiTick className="h6" />
+                  Training & Infrastructure to speed up your portfolio journey
                 </p>
               </div>
               <div className="mt-4 pt-3">
@@ -95,6 +105,7 @@ const PricingSection = () => {
               </div>
             </div>
           </div>
+
           <div className="col-lg-4">
             <div className="pricing-box mt-4">
               <IoMdContacts className="h1" />
@@ -103,6 +114,10 @@ const PricingSection = () => {
                 <p className="mb-2">
                   <TiTick className="h6" />
                   Start Making Revenue From Day 1.
+                </p>
+                <p className="mb-2">
+                  <TiTick className="h6" />
+                  Get Leads on your existing Product.
                 </p>
                 <p className="mb-2">
                   <TiTick className="h6" />
@@ -120,6 +135,36 @@ const PricingSection = () => {
                   className="btn btn-primary btn-rounded"
                 >
                   Register Now
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="pricing-box mt-4">
+              <IoMdContacts className="h1" />
+              <h4 className="f-20 text-primary">Join As Brand Ambassador</h4>
+              <div className="mt-4 pt-2 text-left">
+                <p className="mb-2">
+                  <TiTick className="h6" />
+                  Enhance your resume with a significant Leadership role.
+                </p>
+
+                <p className="mb-2">
+                  <TiTick className="h6" />
+                  Earn 1% Payout on every successful conversion of any Financial
+                  Products driven by your videos.
+                </p>
+                <p className="mb-2">
+                  <TiTick className="h6" />
+                  Gain access to exclusive financial workshops and webinars.
+                </p>
+              </div>
+              <div className="mt-4 pt-3">
+                <button
+                  onClick={() => navigate("../components/financeliteracy.js")}
+                  className="btn btn-primary btn-rounded"
+                >
+                  Join Now
                 </button>
               </div>
             </div>

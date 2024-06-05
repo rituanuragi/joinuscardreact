@@ -335,12 +335,12 @@ const BankForm = () => {
                       className="form-check-input"
                       id="product3"
                       name="products"
-                      value="Credit Card"
-                      checked={formData.products.includes("Credit Card")}
+                      value=" Professional Loan"
+                      checked={formData.products.includes(" Professional Loan")}
                       onChange={handleChange}
                     />
                     <label className="form-check-label" htmlFor="product3">
-                      Credit Card
+                      Professional Loan
                     </label>
                   </div>
                   <div className="form-check">
@@ -349,12 +349,12 @@ const BankForm = () => {
                       className="form-check-input"
                       id="product4"
                       name="products"
-                      value="Savings Account"
-                      checked={formData.products.includes("Savings Account")}
+                      value="Business Loan"
+                      checked={formData.products.includes("Business Loan")}
                       onChange={handleChange}
                     />
                     <label className="form-check-label" htmlFor="product4">
-                      Savings Account
+                      Business Loan
                     </label>
                   </div>
                   <div className="form-check">
@@ -363,12 +363,42 @@ const BankForm = () => {
                       className="form-check-input"
                       id="product5"
                       name="products"
-                      value="Fixed Deposit"
-                      checked={formData.products.includes("Fixed Deposit")}
+                      value="Loan Against Property"
+                      checked={formData.products.includes(
+                        "Loan Against Property"
+                      )}
                       onChange={handleChange}
                     />
                     <label className="form-check-label" htmlFor="product5">
-                      Fixed Deposit
+                      Loan Against Property
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product6"
+                      name="products"
+                      value="Insurance"
+                      checked={formData.products.includes("Insurance")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product6">
+                      Insurance
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product7"
+                      name="products"
+                      value="Investment"
+                      checked={formData.products.includes("Investment")}
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="product6">
+                      Investment
                     </label>
                   </div>
                 </div>
