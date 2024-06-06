@@ -90,7 +90,7 @@ const DSARegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://13.202.31.219:3001/register-dsa", {
+    fetch("http://13.202.31.219:5000/register-dsa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
