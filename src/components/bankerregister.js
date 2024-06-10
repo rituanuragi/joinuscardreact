@@ -49,7 +49,7 @@ const BankForm = () => {
 
   // Handle OTP send button click
   const handleOtpClick = () => {
-    fetch("http://localhost:5000/send-otp", {
+    fetch("http://35.154.194.202:5000/send-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const BankForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/submit-form", {
+    fetch("http://35.154.194.202:5000/submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

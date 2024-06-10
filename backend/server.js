@@ -11,10 +11,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/joinuscard", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://rituf2fintech:Anuragi%402002@cluster0.ctb5mzb.mongodb.net/joinuscard",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 // Define schemas
 const bankerSchema = new mongoose.Schema(
