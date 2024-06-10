@@ -14,7 +14,7 @@ const DisplayData = ({ type }) => {
         ? "dsas"
         : "channelpartners";
     axios
-      .get(`http://localhost:5000/${endpoint}`)
+      .get(`http://35.154.194.202:5000/${endpoint}`)
       .then((response) => {
         setData(response.data);
       })
