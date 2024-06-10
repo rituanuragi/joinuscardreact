@@ -286,6 +286,8 @@ app.post("/submitdsa", (req, res) => {
   newDSA
     .save()
     .then(() => {
+      console.log("DSA data saved successfully.");
+
       // Email content
       const mailOptions = {
         from: "rituanuragi1@gmail.com",
@@ -361,6 +363,7 @@ app.post("/submitdsa", (req, res) => {
       res.status(500).send("Error saving DSA data");
     });
 });
+
 // Create a new channel partner entry using the schema
 app.post("/submitchannelpartner", (req, res) => {
   const formData = req.body;
