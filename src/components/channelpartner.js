@@ -78,7 +78,7 @@ const ChannelForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://13.202.31.219:5000/submitchannelpartner", {
+    fetch("http://35.154.194.202:5000/submitchannelpartner", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const ChannelForm = () => {
   };
 
   const handleOtpClick = () => {
-    fetch("http://localhost:4500/send-otp", {
+    fetch("http://35.154.194.202:5000/send-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
