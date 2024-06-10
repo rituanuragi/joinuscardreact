@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 mongoose.connect(
-  "mongodb+srv://rituf2fintech:Rishav1234%402002@cluster0.ctb5mzb.mongodb.net/joinuscard",
+  "mongodb+srv://rituf2fintech:Rishav1234@cluster0.ctb5mzb.mongodb.net/joinuscard",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
